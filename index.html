@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <title>Catálogo Saudável</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Catálogo de quentinhas e bolos saudáveis. Peça pelo WhatsApp." />
+  <link rel="stylesheet" href="styles.css" />
+  <!-- Pré-conexão para melhorar performance de CDN -->
+  <link rel="preconnect" href="https://www.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://www.googleapis.com" crossorigin />
+</head>
+<body>
+  <header class="topbar">
+    <h1>Catálogo Saudável</h1>
+    <nav id="menu" aria-label="Categorias">
+      <button data-cat="Comidas Saudáveis" class="active">Comidas Saudáveis</button>
+      <button data-cat="Bolos Zero Açúcar">Bolos Zero Açúcar</button>
+      <button data-cat="Bolos Funcionais">Bolos Funcionais</button>
+      <button data-cat="Outros">Outros</button>
+      <button data-cat="Promoção">Promoção do dia</button>
+    </nav>
+    <div class="tools">
+      <input id="busca" type="search" placeholder="Buscar por nome..." aria-label="Buscar item por nome" />
+    </div>
+  </header>
+
+  <main>
+    <section id="status" role="status" aria-live="polite">Carregando…</section>
+    <section id="grid" class="grid" aria-label="Catálogo"></section>
+
+    <!-- Botão de paginação (opcional). Por padrão fica oculto; você pode ativar no app.js -->
+    <div class="pager">
+      <button id="btn-mais" hidden>Carregar mais</button>
+    </div>
+  </main>
+
+  <footer class="foot">
+    <small>&copy; <span id="year"></span> Catálogo Saudável — Peça pelo WhatsApp</small>
+  </footer>
+
+  <!-- Firebase SDK (v9 modular) via CDN -->
+  <script type="module" src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js"></script>
+  <script type="module" src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js"></script>
+
+  <!-- Config do Firebase (preencha em firebase-config.js) -->
+  <script type="module" src="firebase-config.js"></script>
+
+  <!-- App -->
+  <script type="module" src="app.js"></script>
+
+  <script>
+    // ano automático no rodapé
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
